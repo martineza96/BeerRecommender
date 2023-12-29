@@ -1,0 +1,7 @@
+{
+  "name": "beerRecommenderApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
