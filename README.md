@@ -1,54 +1,79 @@
 # Beer Recommender
 
-Welcome to the Beer Recommender project! This project aims to provide beer recommendations based on user preferences. It utilizes data analysis techniques to analyze beer characteristics and user reviews to suggest beers that align with the user's taste preferences.
+Search for a beer you like and get recommendations for similar beers based on flavor profile, ABV and bitterness. The project has two parts: a Jupyter notebook for data exploration and recommender experiments, and an Ionic + React app that lets you search the beers and see recommendations.
 
-## Project Overview
+## Screenshots
 
-The Beer Recommender project consists of the following components:
+| Home | Search | Recommendations |
+|---|---|---|
+| ![Home page with search bar and popular beers](docs/screenshots/home.png) | ![Searching "coors" shows every Coors beer](docs/screenshots/search.png) | ![Pliny The Elder with five similar beers](docs/screenshots/recommendations.png) |
 
-- Data preprocessing: Clean and prepare the beer dataset for analysis.
-- Exploratory data analysis: Perform exploratory analysis to gain insights into the dataset.
-- Beer recommender algorithm: Develop an algorithm that recommends beers based on user preferences.
-- User interface: Create a user interface where users can input their preferences and receive beer recommendations.
-- Visualization: Generate visualizations to better understand the dataset and showcase the results.
+## Features
 
-## Getting Started
+- **Forgiving search** across beer name, brewery and style. Partial words work ("blue mo"), accents are ignored ("munster" finds Münster), and common spellings match ("bud lite" finds Bud Light). The most-reviewed beers are listed first.
+- **Beer details**: style, ABV, IBU range, rating and description.
+- **Similar beers**: the 5 closest beers by cosine similarity on standardized ABV, IBU and 11 flavor-profile features. It's computed in the browser and gives the same results as the notebook.
+- Popular-beer shortcuts, keyboard navigation, and light and dark themes.
 
-To get started with the Beer Recommender project, follow these steps:
+## Data
 
-1. Clone the repository:
+| File | Contents |
+|---|---|
+| `beer_profile_and_ratings.csv` | 3,197 beers: name, style, brewery, description, ABV, min/max IBU, 11 tasting-profile scores (astringency, body, alcohol, bitter, sweet, sour, salty, fruits, hoppy, spices, malty) and average review scores |
+| `Beer Name Fuzzy Match List.csv`, `Brewery Name Fuzzy Match List.csv` | Name mappings used when matching beers and breweries across sources |
+| `Beer Descriptors Simplified.xlsx` | Vocabulary of flavor descriptor words |
+| `beerRecommenderApp/src/data/beersDF.json` | The dataset exported from the notebook for use in the app |
 
+## Project structure
 
-2. Install the required dependencies. You can use the following command:
+```
+BeerEDA.ipynb                 EDA, TF-IDF description recommender, feature recommender
+beerRecommenderApp/           Ionic 7 + React 18 + Vite + TypeScript app
+  src/data/beers.ts           Typed, cleaned beer data
+  src/utils/searchBeers.ts    Search and ranking
+  src/utils/recommend.ts      Feature-based similar-beer recommendations
+  src/components/BeerSearch   Search bar with dropdown results
+  src/pages/Home.tsx          Home page
+docs/screenshots/             README images
+```
 
+## Getting started
 
-3. Run the data preprocessing script to clean and prepare the dataset:
+### Run the app
 
+Requires Node 18+.
 
-5. Develop the beer recommender algorithm by implementing the recommendation logic based on user preferences.
+```bash
+git clone https://github.com/martineza96/BeerRecommender.git
+cd BeerRecommender/beerRecommenderApp
+npm install
+npm run dev          # open the printed URL, usually http://localhost:5173
+```
 
-6. Create the user interface to collect user preferences and display beer recommendations.
+Other scripts: `npm run build` (type-check and production build), `npx vitest run` (unit tests).
 
-## Must-Haves
+### Run the notebook
 
-- Beer dataset: A comprehensive dataset containing beer information, reviews, and characteristics.
-- Data preprocessing: Clean and prepare the dataset for analysis.
-- Exploratory data analysis: Analyze the dataset to gain insights and identify patterns.
-- Beer recommender algorithm: Develop an algorithm that suggests beers based on user preferences.
-- User interface: Create a user-friendly interface for users to input preferences and receive beer recommendations.
+```bash
+pip install pandas numpy matplotlib scikit-learn nltk jupyter
+jupyter notebook BeerEDA.ipynb
+```
 
-## Nice-to-Haves
+## Status
 
-- Integration with external APIs: Incorporate external APIs to enhance the beer recommender algorithm and provide additional information.
-- Personalized recommendations: Implement machine learning techniques to personalize beer recommendations based on user behavior and preferences.
-- User ratings and feedback: Allow users to rate recommended beers and provide feedback to improve the recommendation algorithm.
-- Mobile application: Develop a mobile application for users to access the beer recommender system on their smartphones.
+- [x] Dataset and exploratory data analysis
+- [x] Description-based (TF-IDF) and feature-based recommenders in the notebook
+- [x] App: search and beer details
+- [x] App: similar-beer recommendations
+- [ ] Combine description similarity with feature similarity
+- [ ] Let users adjust recommendations (e.g. "less bitter", "lower ABV")
+- [ ] User ratings and feedback
+- [ ] Mobile build with Capacitor, and deployment
 
-## Future Goals
+## Future goals
 
-- Expand the dataset: Continuously update and expand the beer dataset to include more beers and reviews.
-- Collaborative filtering: Implement collaborative filtering techniques to leverage user preferences and similarities for better beer recommendations.
-- Advanced visualization: Create more advanced visualizations to showcase the beer characteristics and user preferences.
-- Deployment: Deploy the beer recommender system as a web application or API to make it accessible to a wider audience.
-
-
+- Expand the dataset with more beers and reviews
+- Collaborative filtering based on user preferences
+- Personalized recommendations from user behavior
+- Integration with external beer APIs
+- Deploy as a web app or API

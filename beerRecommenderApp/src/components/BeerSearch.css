@@ -1,0 +1,64 @@
+.beer-search {
+  position: relative;
+  width: 100%;
+}
+
+.beer-search__input {
+  --background: var(--ion-background-color, #fff);
+  --border-radius: 14px;
+  --box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  padding: 0;
+}
+
+.beer-search__results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--ion-item-background, var(--ion-background-color, #fff));
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.beer-search__result {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.beer-search__result.is-active {
+  background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+.beer-search__name {
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+.beer-search__name mark {
+  background: none;
+  color: var(--ion-color-primary-shade);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.beer-search__meta {
+  font-size: 0.85rem;
+  color: var(--ion-color-medium);
+}
+
+.beer-search__empty {
+  padding: 14px 12px;
+  color: var(--ion-color-medium);
+}
