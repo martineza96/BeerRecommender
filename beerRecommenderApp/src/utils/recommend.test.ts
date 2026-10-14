@@ -29,6 +29,17 @@ describe('recommend', () => {
     expect(results[0].similarity).toBeCloseTo(0.9919, 3);
   });
 
+  // Saved output of the "Feature Recommendations" cell in BeerEDA.ipynb (beer_index=1183).
+  it('matches the notebook output for Stella Artois', () => {
+    const stella = beers.find((b) => b.id === 1183)!;
+    expect(stella.name).toBe('Stella Artois');
+    const results = recommend(stella);
+    expect(results.map((r) => r.beer.id)).toEqual([192, 1756, 1755, 1144, 1138]);
+    [0.990524, 0.97739, 0.975854, 0.975276, 0.973361].forEach((score, i) =>
+      expect(results[i].similarity).toBeCloseTo(score, 5),
+    );
+  });
+
   it('recommends hoppy beers for a double IPA', () => {
     const names = recommend(byName('Pliny The Elder')).map((r) => r.beer.name);
     expect(names).toEqual(['Arctic Panzer Wolf', 'Hop Stoopid', '2XIPA', 'Abrasive Ale', 'Maximus']);
