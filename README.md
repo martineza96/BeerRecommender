@@ -66,7 +66,7 @@ jupyter notebook BeerEDA.ipynb
 - [x] App: search and beer details
 - [x] App: similar-beer recommendations
 - [x] Combine description similarity with feature similarity
-- [ ] Let users adjust recommendations (e.g. "less bitter", "lower ABV")
+- [x] Let users adjust recommendations (e.g. "less bitter", "lower ABV")
 - [ ] User ratings and feedback
 - [ ] Mobile build with Capacitor, and deployment
 
