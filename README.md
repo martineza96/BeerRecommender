@@ -65,7 +65,7 @@ jupyter notebook BeerEDA.ipynb
 - [x] Description-based (TF-IDF) and feature-based recommenders in the notebook
 - [x] App: search and beer details
 - [x] App: similar-beer recommendations
-- [ ] Combine description similarity with feature similarity
+- [x] Combine description similarity with feature similarity
 - [ ] Let users adjust recommendations (e.g. "less bitter", "lower ABV")
 - [ ] User ratings and feedback
 - [ ] Mobile build with Capacitor, and deployment
