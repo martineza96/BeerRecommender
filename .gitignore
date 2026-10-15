@@ -1,0 +1,4 @@
+
+# Playwright MCP snapshots and logs
+.playwright-mcp/
+.claude/settings.local.json
