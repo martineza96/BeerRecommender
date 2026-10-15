@@ -171,3 +171,31 @@
   color: var(--ion-color-medium);
   font-size: 0.85rem;
 }
+
+.similar__range {
+  margin: 0 0 12px;
+  padding: 4px 16px 0;
+  border: 1px solid var(--ion-color-light-shade);
+  border-radius: 14px;
+  --bar-background: var(--ion-color-light-shade);
+  --bar-background-active: var(--ion-color-primary);
+  --knob-background: var(--ion-color-primary);
+  --pin-background: var(--ion-color-primary);
+}
+
+.similar__range::part(label) {
+  color: var(--ion-color-medium);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.similar__range::part(tick-active) {
+  background: var(--ion-color-primary);
+}
+
+.similar__range-label {
+  color: var(--ion-color-medium);
+  font-size: 0.85rem;
+}
