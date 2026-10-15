@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { IonChip, IonContent, IonIcon, IonPage, IonRange } from '@ionic/react';
 import { beerOutline, star, starHalf, starOutline } from 'ionicons/icons';
 import BeerSearch from '../components/BeerSearch';
-import { Beer, popularBeers } from '../data/beers';
+import { Beer, beers, popularBeers } from '../data/beers';
 import { hasDescriptionMatches } from '../utils/descriptionSimilarity';
 import { recommend } from '../utils/recommend';
 import './Home.css';
@@ -106,6 +107,19 @@ const Home: React.FC = () => {
     setSelected(beer);
     contentRef.current?.scrollToTop(300);
   };
+
+  // Open a beer passed as `/home?beer=<id>` (e.g. from the taste profile), then clear
+  // the param so returning to this tab later doesn't re-select it.
+  const location = useLocation();
+  const history = useHistory();
+  useEffect(() => {
+    const param = new URLSearchParams(location.search).get('beer');
+    if (param === null) return;
+    const id = Number(param);
+    const beer = param.trim() !== '' && Number.isInteger(id) ? beers.find((b) => b.id === id) : undefined;
+    if (beer) selectBeer(beer);
+    history.replace(location.pathname);
+  }, [location.search]);
 
   return (
     <IonPage>

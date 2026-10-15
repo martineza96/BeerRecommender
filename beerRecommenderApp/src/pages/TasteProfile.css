@@ -1,0 +1,75 @@
+.taste-card {
+  margin-bottom: 24px;
+}
+
+.taste-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.taste-card__header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.taste-sliders {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.taste-slider {
+  padding: 12px 0 4px;
+  border-top: 1px solid var(--ion-color-light-shade);
+}
+
+.taste-slider:first-child {
+  border-top: none;
+}
+
+.taste-slider__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.taste-slider__label {
+  font-weight: 700;
+}
+
+.taste-slider__toggle {
+  color: var(--ion-color-medium);
+  font-size: 0.85rem;
+}
+
+.taste-slider ion-range {
+  --bar-background-active: var(--ion-color-primary);
+  --knob-background: var(--ion-color-primary);
+  padding-top: 0;
+}
+
+.taste-slider__end {
+  min-width: 52px;
+  color: var(--ion-color-medium);
+  font-size: 0.85rem;
+}
+
+.taste-slider__end[slot='end'] {
+  text-align: right;
+}
+
+.taste-slider.is-off .taste-slider__label {
+  color: var(--ion-color-medium);
+}
+
+.taste-results h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
