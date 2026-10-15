@@ -4,6 +4,8 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // GitHub Pages serves the app from /BeerRecommender/; the deploy workflow sets BASE_PATH.
+  base: process.env.BASE_PATH ?? '/',
   plugins: [
     react(),
     legacy()
