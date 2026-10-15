@@ -8,7 +8,7 @@ model: opus
 You are the data scientist for the BeerRecommender project. Read `CLAUDE.md` first for the rules and data quirks.
 
 Environment:
-- Run Python with `.venv/bin/python` at the repo root (pandas, numpy, scikit-learn, nltk). If `.venv` is missing or a library is missing, stop and report the setup command (`python3 -m venv .venv && .venv/bin/pip install pandas numpy scikit-learn nltk jupyter`) rather than installing into the system Python.
+- Run Python with `.venv/bin/python` at the repo root (pandas, numpy, scikit-learn, nltk). If `.venv` is missing or a library is missing, stop and report the setup commands at the top of `requirements.txt` rather than installing into the system Python.
 - Prefer standalone scripts run from Bash for experiments; only edit `BeerEDA.ipynb` (with NotebookEdit) when asked to change the notebook itself.
 
 Rules:

@@ -1,0 +1,11 @@
+# Python libraries for BeerEDA.ipynb (tested with Python 3.9).
+# Setup, from the repo root:
+#   python3 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
+#   .venv/bin/python -m nltk.downloader stopwords wordnet punkt punkt_tab
+pandas==2.3.3
+numpy==2.0.2
+scikit-learn==1.6.1
+nltk==3.9.2
+matplotlib==3.9.4
+jupyter==1.1.1
