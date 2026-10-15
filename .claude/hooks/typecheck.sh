@@ -7,9 +7,11 @@ case "$file" in
   *) exit 0 ;;
 esac
 
-cd "$CLAUDE_PROJECT_DIR/beerRecommenderApp" || exit 0
+# Check the checkout the file belongs to, so edits in a git worktree are type-checked there.
+root=$(git -C "$(dirname "$file")" rev-parse --show-toplevel 2>/dev/null) || root=$CLAUDE_PROJECT_DIR
+cd "$root/beerRecommenderApp" || exit 0
 if ! out=$(npx tsc --noEmit 2>&1); then
-  echo "Type errors after editing ${file#$CLAUDE_PROJECT_DIR/}:" >&2
+  echo "Type errors after editing ${file#$root/}:" >&2
   echo "$out" | head -30 >&2
   exit 2
 fi
